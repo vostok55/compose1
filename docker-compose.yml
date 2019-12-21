@@ -1,0 +1,18 @@
+version: '2'
+services:
+  git:
+    build: git
+    links:
+      - maven
+    volumes_from:
+      - maven
+  maven:
+    build: maven
+    links:
+      - tomcat
+    volumes_from:
+      - tomcat
+  tomcat:
+    build: tom
+    ports:
+      - "8080:8080"   
